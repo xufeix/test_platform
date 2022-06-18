@@ -40,11 +40,7 @@
     <input type="radio" id="google" value="Google" v-model="picked">
     <label for="google">Google</label>
     <br>
-    <span>选中值为:
-        {% verbatim myblock %}
-        {{ picked }}
-        {% endverbatim myblock %}
-    </span>
+    <span>选中值为: {{ picked }}</span>
 </div>
 
 <script>

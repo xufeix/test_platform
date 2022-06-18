@@ -29,7 +29,7 @@ def index(request):
 
 
 def index_html(request):
-    return render(request, 'creat_data.html')
+    return render(request, 'creat_data.html', {"picked":111111})
 
 
 def add_case(request):
