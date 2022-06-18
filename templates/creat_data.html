@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>构造数据</title>
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+
+    <script>
+        function query(value) {
+            var phone = document.getElementById("phone").value
+            var tid = document.getElementById('tid').value
+            var time = document.getElementById('time').value
+
+            console.log(phone)
+            // window.alert('2343')
+            $.ajax({
+                type: 'post',
+                url: "{% url 'creat_data' %}",
+                data: JSON.stringify({
+                    "phone": Number(phone),
+                    "tid": Number(tid),
+                    'time': Number(time),
+                }),
+                dataType: "json",
+                success: function (msg) {
+                    alert(msg)
+                }
+            })
+        }
+
+    </script>
+</head>
+<body>
+<h3>发帖子:</h3>
+<div id="app">
+    <select v-model="selected" name="fruit">
+        <option value="">选择运行环境</option>
+        <option value="http://magatest.icocofun.com">测试环境</option>
+        <option value="http://usapi.icocofun.com">线上环境</option>
+    </select>
+
+    <div id="output">
+        选择的网站是: {{ selected }}
+    </div>
+</div><br>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            selected: ''
+        }
+    })
+</script>
+</div>
+<input type="text" name="iPhone" placeholder="请输入手机号" id="phone"><br><br>
+<input type="text" name="iPhone" placeholder="输入话题ID" id="tid"><br><br>
+<input type="text" name="iPhone" placeholder="输入话题名称" id="tname"><br>
+<p>类型</p>
+
+<input type="text" name="iPhone" placeholder="执行次数" id="time"><br><br>
+<button onclick="query()">执行</button>
+
+</body>
+</html>
